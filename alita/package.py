@@ -23,13 +23,10 @@ _requires = {
     # E.g. if `alita maya` is requested, the "maya"
     # requirements are added to the list.
     "maya": [
-        "pyblish_base-1.7",
-        "pyblish_lite-0.8",
+        "maya_base",
         "mgear-2.4",
     ],
     "nuke": [
-        "pyblish_base-1.7",
-        "pyblish_qml-1.9",
     ]
 }
 

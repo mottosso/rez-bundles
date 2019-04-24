@@ -24,12 +24,13 @@ def commands():
     global system
 
     if system.platform == "windows":
-        bindir = r"c:\program files\autodesk\maya2018\bin\\"
+        bindir = "c:\\program files\\autodesk\\maya2018\\bin\\"
 
     elif system.platform == "linux":
         bindir = "/opt/maya2018/bin/"
 
-    assert os.path.exists(bindir), "Missing files: %s" % bindir
+    if not os.path.exists(bindir):
+        print("WARNING: Missing files: %s" % bindir)
 
     bindir = "\"%s\"" % bindir
 
