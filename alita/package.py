@@ -2,11 +2,13 @@ late = locals()["late"]
 
 name = "alita"
 version = "0.3.17"
+category = "int"
 
 build_command = False
 
 _requires = {
     "any": [
+        "welcome-1",
         "base-1",
         "python-2.7",
 
