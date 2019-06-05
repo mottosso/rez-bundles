@@ -16,9 +16,11 @@ _requires = {
         # this must be their version.
         "~maya-2018",
         "~nuke-11",
-        "~houdinifx-17",
+        "~houdini-fx.17",
         "~aftereffects-cs6",
         "~photoshop-2018",
+        "~terminal",
+        "~texteditor",
     ],
 
     # Requirements relative a request
@@ -100,14 +102,14 @@ def commands():
     global expandvars
 
     environ = this._environ
-    result = environ["any"].items()
+    result = list(environ["any"].items())
 
     # Add request-specific environments
     for key, values in environ.items():
         if key not in request:
             continue
 
-        result += values.items()
+        result += list(values.items())
 
     for key, value in result:
         if isinstance(value, (tuple, list)):

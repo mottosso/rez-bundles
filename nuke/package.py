@@ -1,20 +1,24 @@
 # An example of a package referencing something from outside
 # of the local package.
 
-name = "maya"
-version = "2017.0.1"
+name = "nuke"
+version = "11.3.3"
+category = "ext"
 requires = []
 
-build_command = False
+build_command = "python -m rezutils build {root}"
+private_build_requires = ["rezutils-1"]
 
 # Cross-platform binaries (i.e. shell scripts)
 # are built and deployed with this package.
 tools = [
-    "maya",
-    "render",
-    "mayabatch",
-    "mayagui_lic",
+    "nuke",
 ]
+
+_icons = {
+    "32x32": "{root}/resources/icon_256x256.png",
+    "64x64": "{root}/resources/icon_256x256.png",
+}
 
 
 def commands():
@@ -24,10 +28,10 @@ def commands():
     global system
 
     if system.platform == "windows":
-        bindir = "c:\\program files\\autodesk\\maya2017\\bin\\"
+        bindir = "c:\\windows\\system32"
 
     elif system.platform == "linux":
-        bindir = "/opt/maya2017/bin/"
+        bindir = "/opt/nuke11.3v3/bin/"
 
     if not os.path.exists(bindir):
         print("WARNING: Missing files: %s" % bindir)
@@ -36,12 +40,4 @@ def commands():
 
     # Add specific names to executables made
     # available by this package.
-    alias("render", bindir + "render")
-    alias("maya", bindir + "maya" + (
-
-        # Manage plug-in loading manually
-        " -noAutoloadPlugins" +
-
-        # Python 3 compatibility warnings
-        " -3"
-    ))
+    alias("nuke", "notepad")
